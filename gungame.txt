@@ -1,0 +1,8 @@
+"gungame"
+{
+	"base"		"sandbox"
+	"title"		"gungame"
+	"maps"		"^gm_"
+	"menusystem"	"1"
+	"settings"
+}
