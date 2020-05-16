@@ -12,5 +12,8 @@ function plymeta:SetupTeam(teamid)
 	self:SetRunSpeed(400)
 	self:SetWalkSpeed(100)
 	self:SetModel("models/player/Group03m/Male_0".. math.random(1,9)..".mdl")
+	self:Give("gmod_tool", false)
+	self:Give("weapon_physgun", false)
+	self:SetupHands(ent)
 end
 
