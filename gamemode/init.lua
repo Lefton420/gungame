@@ -5,6 +5,10 @@ include("shared.lua")
 -- Asignes team on player respawn
 function GM:PlayerSpawn(ply)	
 	ply:SetupTeam(math.random(0,1))
+
+	for k,v in pairs(player.GetAll()) do
+		v:ChatPrint(ply:Nick().." Has Spawned they are on " .. team.GetName(ply:Team()).." team")
+	end
 end
 
 -- Disables player team freindley fire 
