@@ -2,6 +2,12 @@ AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
 include("shared.lua")
 
+
+
+function GM:PlayerInitialSpawn()
+	--some stuff this is needed later
+end
+
 -- Asignes team on player respawn
 function GM:PlayerSpawn(ply)	
 	ply:SetupTeam(math.random(0,1))
