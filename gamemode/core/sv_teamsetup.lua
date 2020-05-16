@@ -5,6 +5,7 @@ team.SetUp(1, "Combine", Color(0, 0, 0), false)
 
 function plymeta:SetupTeam(teamid)
 	
+	-- Sets model based on team
 	if teamid == 0 then
 		self:SetModel("models/player/Group03/male_0".. math.random(0,9) ..".mdl")
 	elseif teamid == 1 then
