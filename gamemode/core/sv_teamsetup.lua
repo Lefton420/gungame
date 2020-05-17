@@ -17,10 +17,19 @@ function plymeta:SetupTeam(teamid)
 	self:SetHealth(100)
 	self:SetRunSpeed(400)
 	self:SetWalkSpeed(100)
-	self:Give("weapon_physgun", false)
-	self:Give("gmod_tool", false)
+	self:GiveWeapons(n)
 	self:SetupHands()
 	self:SetTeam(teamid)
 end
 
+-- list of weapons to give to both teams
+function plymeta:GiveWeapons(n)
+	for k, v in pairs (player.GetAll()) do
+		self:Give("weapon_physgun", false)
+		self:Give("gmod_tool", false)
+		self:Give("weapon_crossbow", false)
+		self:Give("weapon_shotgun", false)
+		
+	end
+end
 

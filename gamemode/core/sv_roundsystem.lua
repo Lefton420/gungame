@@ -76,3 +76,16 @@ function EndRound(winners)
 		roundActive = false
 	end)
 end
+
+-- Makes sure the about the same pepole are on both teams
+function AutoBalance()
+	if table.Count(team.GetPlayers(0)) > table.Count(team.GetPlayers(1)) then 
+		return 1
+	
+	elseif table.Count(team.GetPlayers(0)) < table.Count(team.GetPlayers(1)) then 
+		return 0
+
+	else
+		return 0
+	end
+end

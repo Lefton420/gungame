@@ -10,7 +10,7 @@ end
 
 -- Asignes team on player respawn and checks if new round can start
 function GM:PlayerSpawn(ply)	
-	ply:SetupTeam(math.random(0,1))
+	ply:SetupTeam(AutoBalance())
 
 	for k,v in pairs(player.GetAll()) do
 		v:ChatPrint(ply:Nick().." Has Spawned they are on " .. team.GetName(ply:Team()).." team")
