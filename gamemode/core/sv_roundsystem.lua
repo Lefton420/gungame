@@ -10,9 +10,9 @@ function RoundStart()
 		end
 	end
 	
-	-- if there is the same amount alive as dead OR 
+	-- if there is the same amount alive as dead and 
 	-- if theres more than one player alive set round active to true
-	if Alive >= table.Count(player.GetAll()) && table.Count(player.GetAll()) > 1  then
+	if Alive >= table.Count(player.GetAll()) and table.Count(player.GetAll()) > 1  then
 		 roundActive = true
 	end
 	print("Round started: ".. tostring(roundActive))
@@ -56,20 +56,20 @@ end
 function EndRound(winners)
 	print(winners .. " won the round!")
 	
-	for k, v in pairs(players.GetAll()) do
+	for k, v in pairs(player.GetAll()) do
 		if team.GetName(v:Team()) == winners then
-			v:ChatPrint( winners .. "won teh round but this time its from an if statement")
+			v:ChatPrint( winners .. " won the round!")
 		end
 	end
 	
 	-- timer to clean up the map after the round ends and resets roundActive
 	timer.Create("cleanup", 3, 1,function()
 		game.CleanUpMap(false, {})
-		for k, v in pairs(players.GetAll()) do
+		for k, v in pairs(player.GetAll()) do
 			if v:Alive() then
 				v:SetupHands()
-				v:StripWeapons()
-				V:KillSilent()
+				--v:StripWeapons()
+				v:KillSilent()
 			end
 			v:SetupTeam(v:Team())
 		end

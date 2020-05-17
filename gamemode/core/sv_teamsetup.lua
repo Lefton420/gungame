@@ -7,7 +7,7 @@ function plymeta:SetupTeam(teamid)
 	
 	-- Sets model based on team
 	if teamid == 0 then
-		self:SetModel("models/player/Group03/male_0".. math.random(0,9) ..".mdl")
+		self:SetModel("models/player/Group03/male_0".. math.random(1,9) ..".mdl")
 	elseif teamid == 1 then
 		self:SetModel("models/player/police.mdl")
 	end

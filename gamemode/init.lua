@@ -16,13 +16,13 @@ function GM:PlayerSpawn(ply)
 		v:ChatPrint(ply:Nick().." Has Spawned they are on " .. team.GetName(ply:Team()).." team")
 	end
 	
-	-- kills  player on join if round cannot start
-	if roundActive == true then 
-		ply:KillSilent()
-		return
-	else
-		RoundStart()
-	end
+	-- -- kills  player on join if round cannot start
+	-- if roundActive == true then 
+	-- 	ply:KillSilent()
+	-- 	return
+	-- else
+	-- 	RoundStart()
+	-- end
 end
 
 -- Checks if the round should end on player death
