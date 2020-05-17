@@ -1,6 +1,6 @@
 local plymeta = FindMetaTable("Player")
 
-team.SetUp(0, "Rebels", Color(0, 0, 0), false)
+team.SetUp(0, "Rebel", Color(0, 0, 0), false)
 team.SetUp(1, "Combine", Color(0, 0, 0), false)
 
 function plymeta:SetupTeam(teamid)
@@ -17,8 +17,8 @@ function plymeta:SetupTeam(teamid)
 	self:SetHealth(100)
 	self:SetRunSpeed(400)
 	self:SetWalkSpeed(100)
-	self:Give("gmod_tool", false)
 	self:Give("weapon_physgun", false)
+	self:Give("gmod_tool", false)
 	self:SetupHands()
 	self:SetTeam(teamid)
 end

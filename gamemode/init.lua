@@ -2,18 +2,43 @@ AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
 include("shared.lua")
 
-
+roundActive = false
 
 function GM:PlayerInitialSpawn()
-	--some stuff this is needed later
+	--this is needed later
 end
 
--- Asignes team on player respawn
+-- Asignes team on player respawn and checks if new round can start
 function GM:PlayerSpawn(ply)	
 	ply:SetupTeam(math.random(0,1))
 
 	for k,v in pairs(player.GetAll()) do
 		v:ChatPrint(ply:Nick().." Has Spawned they are on " .. team.GetName(ply:Team()).." team")
+	end
+	
+	-- kills  player on join if round cannot start
+	if roundActive == true then 
+		ply:KillSilent()
+		return
+	else
+		RoundStart()
+	end
+end
+
+-- Checks if the round should end on player death
+function GM:PlayerDeath(ply)
+	RoundEndCheck()
+end
+
+function GM:PlayerDisconnected(ply)
+	RoundEndCheck()
+end
+
+function GM:PlayerDeathThink(ply)
+	if roundActive == false then
+		ply:Spawn()
+	else
+		return false
 	end
 end
 
