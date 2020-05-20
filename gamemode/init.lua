@@ -2,9 +2,6 @@ AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
 include("shared.lua")
 
-
---AHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-
 roundActive = false
 
 function GM:PlayerInitialSpawn()
