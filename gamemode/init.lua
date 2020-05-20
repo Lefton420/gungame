@@ -2,11 +2,14 @@ AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
 include("shared.lua")
 
+
+--AHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+
 roundActive = false
 
 function GM:PlayerInitialSpawn()
 	--this is needed later
-end
+end 
 
 -- Asignes team on player respawn and checks if new round can start
 function GM:PlayerSpawn(ply)	
