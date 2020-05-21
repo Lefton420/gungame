@@ -1,23 +1,47 @@
 
+function UpdateTimer(time)
+	net.Start("round_timer")
+	net.WriteInt(time, 10)
+
+	net.Broadcast()
+
+end
+
+
 -- Run when when round starts
 function RoundStart()
+	local time = 5
+	UpdateTimer(time)
 	
-	-- finds how many players are alive
-	local Alive = 0
-	for k, v in pairs(player.GetAll()) do
-		if v:Alive() then
-			Alive = Alive + 1
+	timer.Create("round",1,time,function()
+		time = time - 1
+		local Alive = 0
+		for k, v in pairs(player.GetAll()) do
+			if v:Alive() then
+				Alive = Alive + 1
+			end
 		end
-	end
-	
-	-- if there is the same amount alive as dead and 
-	-- if theres more than one player alive set round active to true
-	if Alive >= table.Count(player.GetAll()) and table.Count(player.GetAll()) > 1  then
-		 roundActive = true
-	end
-	print("Round started: ".. tostring(roundActive))
-	RoundEndCheck()
+		
+		if Alive >= table.Count(player.GetAll()) and table.Count(player.GetAll()) > 1 and time <= 0  then
+			roundActive = true
+
+			net.Start("round_active")
+				net.WriteBool(true)
+			net.Broadcast()
+		elseif table.Count(player.GetAll()) then
+			UpdateTimer(5)
+			return
+		end
+		if time <= 0 then
+			print("Round started: ".. tostring(roundActive))
+			RoundEndCheck()
+		end
+		UpdateTimer(time)
+	end)	
 end
+	
+	
+
 
 --Checks if the round is over
 function RoundEndCheck()

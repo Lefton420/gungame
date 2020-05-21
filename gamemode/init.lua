@@ -2,6 +2,10 @@ AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
 include("shared.lua")
 
+
+util.AddNetworkString("round_timer")
+util.AddNetworkString("round_active")
+
 roundActive = false
 
 function GM:PlayerInitialSpawn()
