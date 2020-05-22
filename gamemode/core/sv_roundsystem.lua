@@ -8,7 +8,7 @@ function UpdateTimer(time)
 end
 
 
--- Run when when round starts
+-- Run to start the round
 function RoundStart()
 	local time = 5
 	UpdateTimer(time)
@@ -22,19 +22,24 @@ function RoundStart()
 			end
 		end
 		
+		-- if there are more alive than total and there is more than one player adn time is <= 0 
+		--then start round
 		if Alive >= table.Count(player.GetAll()) and table.Count(player.GetAll()) > 1 and time <= 0  then
 			roundActive = true
 
 			net.Start("round_active")
 				net.WriteBool(true)
 			net.Broadcast()
+		
 		elseif table.Count(player.GetAll()) then
 			UpdateTimer(5)
 			return
 		end
+		
 		if time <= 0 then
 			print("Round started: ".. tostring(roundActive))
 			RoundEndCheck()
+		
 		end
 		UpdateTimer(time)
 	end)	
@@ -47,8 +52,17 @@ end
 function RoundEndCheck()
 	print("Round started: ".. tostring(roundActive))
 
+	time = 31
+
 	if roundActive == false then return end
-	timer.Create("checkdelay",1,1,function()
+	timer.Create("checkdelay",1,time,function()
+		time = time - 1
+		UpdateTimer(time)
+
+		if time <= 0 then
+			EndRound("No one")
+		end
+		
 		local combineAlive = 0 
 		local rebelAlive = 0
 		
@@ -87,16 +101,20 @@ function EndRound(winners)
 	end
 	
 	-- timer to clean up the map after the round ends and resets roundActive
+	timer.Remove("checkdelay")
 	timer.Create("cleanup", 3, 1,function()
 		game.CleanUpMap(false, {})
 		for k, v in pairs(player.GetAll()) do
 			if v:Alive() then
 				v:SetupHands()
-				--v:StripWeapons()
+				v:StripWeapons()
 				v:KillSilent()
 			end
 			v:SetupTeam(v:Team())
 		end
+		net.Start("round_active")
+			net.WriteBool(true)
+		net.Broadcast()
 		roundActive = false
 	end)
 end
