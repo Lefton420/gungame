@@ -8,10 +8,6 @@ util.AddNetworkString("round_active")
 
 roundActive = false
 
-function GM:PlayerInitialSpawn()
-	--this is needed later
-end 
-
 -- Asignes team on player respawn and checks if new round can start
 function GM:PlayerSpawn(ply)	
 	ply:SetupTeam(AutoBalance())
@@ -19,23 +15,7 @@ function GM:PlayerSpawn(ply)
 	for k,v in pairs(player.GetAll()) do
 		v:ChatPrint(ply:Nick().." Has Spawned they are on " .. team.GetName(ply:Team()).." team")
 	end
-end
-
-
-function GM:PlayerDeath(ply)
-	--unneeded rn
-end
-
-function GM:PlayerDisconnected(ply)
-	RoundEndCheck()
-end
-
-function GM:PlayerDeathThink(ply)
-	if roundActive == false then
-		ply:Spawn()
-	else
-		return false
-	end
+	RoundStartCheck()
 end
 
 -- Disables player team freindley fire 
