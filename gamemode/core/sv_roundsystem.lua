@@ -10,25 +10,25 @@ function RoundStartCheck()
 		RoundStart()
 	else print("not enough players ")
 		--add a notifacation 
-	end	
+	end
 end
 
 function RoundStart()
 	print("The round started")
-	-- move players to starting area
+	roundActive = true
+	-- move players to starting area useing entity
 	-- start a timer
-
 end
 
 
 function RoundEndCheck()
 	-- checks when all players on one side are dead
 	RoundEnd()
-
 end
 
 function RoundEnd()
-	--
+	roundActive = false
+	--kill all players 
 end
 
 -- Makes sure the about the same pepole are on both teams
@@ -154,4 +154,3 @@ end
 -- 		roundActive = false
 -- 	end)
 -- end
-
