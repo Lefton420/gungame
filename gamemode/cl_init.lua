@@ -3,7 +3,7 @@ include("shared.lua")
 -- Reciver for the notify function
 net.Receive("notify", function()
     local message = net.ReadString()
-    notification.AddLegacy(message, 0, 10)
+    notification.AddLegacy(message, 3, 10)
 end)
 
 -- Makes it so players see eachother as blue and enemys as red

@@ -10,7 +10,7 @@ util.AddNetworkString("notify")
 function GM:PlayerSpawn(ply)	
 
 	for k,v in pairs(player.GetAll()) do
-		v:Notify(ply:Nick().." Has Spawned they are on " .. team.GetName(ply:Team()).." team")
+		v:Notify(ply:Nick().." Has Spawned they are on the " .. team.GetName(ply:Team()).." team")
 	end
 	
 	RoundStartCheck()

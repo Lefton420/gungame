@@ -6,10 +6,10 @@ function RoundStartCheck()
 	--One has already started 
 
 	if table.Count(player.GetAll()) >= 2 then
-		print("enough players would start round")
+		print("Round starting....")
 		RoundStart()
-	else print("not enough players ")
-		--add a notifacation 
+	else print("Not enough players ")
+		
 	end
 end
 
