@@ -8,7 +8,6 @@ util.AddNetworkString("notify")
 
 -- Asignes team on player respawn and checks if new round can start
 function GM:PlayerSpawn(ply)	
-
 	for k,v in pairs(player.GetAll()) do
 		v:Notify(ply:Nick().." Has Spawned they are on the " .. team.GetName(ply:Team()).." team")
 	end
