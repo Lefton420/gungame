@@ -64,6 +64,7 @@ local SCORE_BOARD = {
 
 SCORE_BOARD = vgui.RegisterTable(SCORE_BOARD, "EditablePanel")
 
+-- Opens the scoreboard 
 function GM:ScoreboardShow()
     if !IsValid(Scoreboard) then
         Scoreboard = vgui.CreateFromTable(SCORE_BOARD)
@@ -76,6 +77,7 @@ function GM:ScoreboardShow()
     end
 end 
 
+-- Closes the scoreboard
 function GM:ScoreboardHide()
     if IsValid(Scoreboard) then
         Scoreboard:Remove()

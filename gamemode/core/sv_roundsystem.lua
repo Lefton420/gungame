@@ -44,6 +44,20 @@ function AutoBalance()
 	end
 end
 
+
+function GM:PlayerSelectSpawn( ply )
+
+-- loop through all spawn points on spawning it set a varibil that sets its team
+-- then check if there the same team the npick a radom one to spawn at
+
+
+end
+
+
+
+
+
+
 -- -- Run to start the round
 -- function RoundStart()
 -- 	local time = 5
