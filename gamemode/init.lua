@@ -67,16 +67,13 @@ end
 
 -- Spawns the player spawnpoint entitys and assigns them teams
 function GM:InitPostEntity()
-	print("entity initalise")
 	local rebelspawns = ents.Create("PlayerSpawnPoint")
 	rebelspawns:SetPos(Vector(811.083557, 693.539429, -79.968750))
 	rebelspawns.team = 0
 	rebelspawns:Spawn()
-	print("rebelspawns")
 	
 	local combinespawns = ents.Create("PlayerSpawnPoint")
 	combinespawns:SetPos(Vector(809.162903, 492.670959, -79.968750))
 	combinespawns.team = 1
 	combinespawns:Spawn()
-	print("combinespawns")
 end
