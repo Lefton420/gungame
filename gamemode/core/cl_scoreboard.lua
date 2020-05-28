@@ -4,6 +4,82 @@ surface.CreateFont("Scoreboardtitle", {
     weight = 800
 })
 
+surface.CreateFont("ScoreboardPlayer", {
+    font = "Helvetica",
+    size = 22,
+    weight = 800
+})
+
+local PLAYER_LINE = {
+    Init = function(self)
+
+        self.AvatarButton = self:Add("DButton")
+        self.AvatarButton:Dock(LEFT)
+        self.AvatarButton:DockMargin(3,3,0,3)
+        self.AvatarButton:SetContentAlignment(5)
+        self.AvatarButton:SetSize(32,32)
+        self.AvatarButton.DoClick - function() self.Player():ShowProfile() end
+
+        self.Avatar = vgui.Create("AvatarImage", self.AvatarButton)
+        self.Avatar:SetSize(32,32)
+        self.Avatar:SetMouseInputEnabled(false)
+
+        self.Name = self:Add("DLabel")
+        self.Name:Dock(FILL)
+        self.Name:SetFont("ScoreboardPlayer")
+        self.Name:SetTextColor(100,100,100)
+        self.Name:DockMargin(0,0,0,0)
+
+        self.MutePanel = self:Add("DPanel")
+        self.MutePanel:SetSize(36,self:GetTall())
+        self.MutePanel:Dock(RIGHT)
+        function self.MutePanel:Paint(w,h)
+            draw.RoundedBox(0,0,0,w,h,Color(50,50,50,150))
+        end
+
+        self.Mute = self.MutePanel:Add("DImageButton")
+        self.Mute:SetSize(32,32)
+        self.Mute:Dock(FILL)
+        self.Mute:SetContentAlignment(5)
+
+        self.Ping = self:Add("DLabel")
+        self.Ping:Dock(RIGHT)
+        self.Ping:DockMargin(0,0,2,0)
+        self.Ping:SetWidth(50)
+        self.Ping:SetFont("ScoreboardPlayer")
+        self.Ping:SetTextColor(Color(100,100,100))
+        self.Ping:SetContentAlignment(5)
+
+        self.ScorePanel = self:Add("DPanel")
+        self.ScorePanel:SetSize(60,self:GetTall())
+        self.ScorePanel:Dock(RIGHT)
+        self.ScorePanel:DockMargin(0,0,4,0)
+        function self.ScorePanel:Paint(w,h)
+            draw.RoundedBox(0,0,0,w,h,Color(100,100,100,150))
+        end
+
+        self.Score = self.ScorePanel:Add("DLabel")
+        self.Score:Dock(FILL)
+        self.Score:SetFont(ScoreboardDefuault)
+        self.Score:SetTextColor(Color(100,100,100))
+        self.Score:SetContentAlignment(5)
+
+        self:Dock(TOP)
+        self:SetHeight(38)
+        self:DockMargin(10,0,10,2)
+
+    end,
+
+    Setup = function(self, pl)
+
+        self.Player = pl
+        self.Avatar:SetPlayer(pl)
+        self:Think(self)
+
+    end,
+
+}
+
 local SCORE_BOARD = {
     Init = function(self)
 

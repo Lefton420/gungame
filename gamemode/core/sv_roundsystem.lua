@@ -45,12 +45,16 @@ function AutoBalance()
 end
 
 
-function GM:PlayerSelectSpawn( ply )
+function GM:PlayerSelectSpawn(ply)
 
--- loop through all spawn points on spawning it set a varibil that sets its team
--- then check if there the same team the npick a radom one to spawn at
-
-
+	for k,v in pairs(ents.FindByClass("PlayerSpawnPoint")) do
+		if v.team == 1 and ply:Team() == 1 then
+			--print("and ply.team == 1 and v.team == 1")
+			return v
+		elseif v.team == 0 and ply:Team() == 0 then
+			return v
+		end
+	end
 end
 
 

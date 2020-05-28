@@ -16,6 +16,16 @@ function GM:PlayerSpawn(ply)
 	ply:SetupTeam(AutoBalance())
 end
 
+-- Asignes team on player respawn and checks if new round can start
+function GM:PlayerInitialSpawn(ply)
+	for k,v in pairs(player.GetAll()) do
+		v:Notify(ply:Nick().." Has Spawned they are on the " .. team.GetName(ply:Team()).." team")
+	end
+	
+	RoundStartCheck()
+	ply:SetupTeam(AutoBalance())
+end
+
 -- Server side notify function
 local plyMeta = FindMetaTable("Player")
 function plyMeta:Notify(message)
@@ -67,13 +77,17 @@ end
 
 -- Spawns the player spawnpoint entitys and assigns them teams
 function GM:InitPostEntity()
+	
 	local rebelspawns = ents.Create("PlayerSpawnPoint")
 	rebelspawns:SetPos(Vector(811.083557, 693.539429, -79.968750))
 	rebelspawns.team = 0
+	rebelspawns:SetColor(Color(255,0,0))
 	rebelspawns:Spawn()
 	
 	local combinespawns = ents.Create("PlayerSpawnPoint")
 	combinespawns:SetPos(Vector(809.162903, 492.670959, -79.968750))
 	combinespawns.team = 1
+	combinespawns:SetColor(Color(0,0,255))
 	combinespawns:Spawn()
+	
 end
