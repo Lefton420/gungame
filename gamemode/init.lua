@@ -18,12 +18,12 @@ end
 
 -- Asignes team on player respawn and checks if new round can start
 function GM:PlayerInitialSpawn(ply)
-	for k,v in pairs(player.GetAll()) do
-		v:Notify(ply:Nick().." Has Spawned they are on the " .. team.GetName(ply:Team()).." team")
-	end
+	-- for k,v in pairs(player.GetAll()) do
+	-- 	v:Notify(ply:Nick().." Has Spawned they are on the " .. team.GetName(ply:Team()).." team")
+	-- end
 	
-	RoundStartCheck()
-	ply:SetupTeam(AutoBalance())
+	-- RoundStartCheck()
+	-- ply:SetupTeam(AutoBalance())
 end
 
 -- Server side notify function

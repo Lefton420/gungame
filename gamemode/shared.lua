@@ -27,7 +27,7 @@ local function loadFile(name)
 	end
 end
 
--- loops through every file in bdf the runs loadfile on it
+-- loops through every file in the gamemode the runs loadfile on it
 local function loadFolder(directory)
 	for k,v in pairs(file.Find(directory.."/*.lua", "LUA")) do
 		loadFile(directory.."/"..v)
