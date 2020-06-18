@@ -6,28 +6,31 @@ roundActive = false
 
 util.AddNetworkString("notify")
 
--- Asignes team on player respawn and checks if new round can start
+
 function GM:PlayerSpawn(ply)	
-	RoundStartCheck()
-	ply:SetupTeam(AutoBalance())
-	for k,v in pairs(player.GetAll()) do
-		v:Notify(ply:Nick().." Has Spawned they are on the " .. team.GetName(ply:Team()).." team")
-	end
-	
-	
+-- needed later
 end
 
 -- Asignes team on player respawn and checks if new round can start
-function GM:PlayerInitialSpawn(ply)
-	for k,v in pairs(player.GetAll()) do
-		--v:Notify(ply:Nick().." Has Spawned they are on the " .. team.GetName(ply:Team()).." team")
-		v:ConCommand( "developer 1 " )
+function GM:PlayerSpawn(ply)
+	if ply.hasfirstspawned then
+		return
 	end
+	ply.hasfirstspawned = true
+	-- everything below this ↑ only runs the first time you spawn
 
+	RoundStartCheck()
+	
+	ply:SetupTeam(AutoBalance())
+	
+	for k,v in pairs(player.GetAll()) do
+		v:Notify(ply:Nick().." Has Spawned they are on the " .. team.GetName(ply:Team()).." team")
+	end
+	ply:Spawn()
+
+	-- Makes it so you can noclip
 	local d = GetConVar( "sbox_noclip" )
 	d:SetBool(true)
-	-- RoundStartCheck()
-	-- ply:SetupTeam(AutoBalance())
 end
 
 -- Server side notify function

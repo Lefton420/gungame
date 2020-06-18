@@ -1,7 +1,5 @@
 local plymeta = FindMetaTable("Player")
 
-team.SetUp(0, "Rebel", Color(0, 0, 0), false)
-team.SetUp(1, "Combine", Color(0, 0, 0), false)
 
 function plymeta:SetupTeam(teamid)
 	
@@ -29,7 +27,6 @@ function plymeta:GiveWeapons(n)
 		self:Give("gmod_tool", false)
 		self:Give("weapon_crossbow", false)
 		self:Give("weapon_shotgun", false)
-		
 	end
 end
 

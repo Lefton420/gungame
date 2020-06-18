@@ -46,12 +46,9 @@ end
 
 
 function GM:PlayerSelectSpawn(ply)
-
+	print(ply:Team())
 	for k,v in pairs(ents.FindByClass("PlayerSpawnPoint")) do
-		if v.team == 1 and ply:Team() == 1 then
-			--print("and ply.team == 1 and v.team == 1")
-			return v
-		elseif v.team == 0 and ply:Team() == 0 then
+		if v.team == ply:Team() then
 			return v
 		end
 	end
