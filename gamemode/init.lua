@@ -19,10 +19,13 @@ end
 
 -- Asignes team on player respawn and checks if new round can start
 function GM:PlayerInitialSpawn(ply)
-	-- for k,v in pairs(player.GetAll()) do
-	-- 	v:Notify(ply:Nick().." Has Spawned they are on the " .. team.GetName(ply:Team()).." team")
-	-- end
-	
+	for k,v in pairs(player.GetAll()) do
+		--v:Notify(ply:Nick().." Has Spawned they are on the " .. team.GetName(ply:Team()).." team")
+		v:ConCommand( "developer 1 " )
+	end
+
+	local d = GetConVar( "sbox_noclip" )
+	d:SetBool(true)
 	-- RoundStartCheck()
 	-- ply:SetupTeam(AutoBalance())
 end
@@ -86,7 +89,7 @@ function GM:InitPostEntity()
 	rebelspawns:Spawn()
 	
 	local combinespawns = ents.Create("PlayerSpawnPoint")
-	combinespawns:SetPos(Vector(809.162903, 492.670959, -79.968750))
+	combinespawns:SetPos(Vector(811.083557, 492.670959, -79.968750))
 	combinespawns.team = 1
 	combinespawns:SetColor(Color(0,0,255))
 	combinespawns:Spawn()
