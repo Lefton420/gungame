@@ -23,6 +23,7 @@ net.Receive("devmenu",function()
             RunConsoleCommand("bot")
         end
 
+        -- kick all bot button
         local button2 = vgui.Create("DButton", frame)
         button2:SetText("Kick All bots")
         button2:SetSize(100,30)
