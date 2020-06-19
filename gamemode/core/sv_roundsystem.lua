@@ -5,11 +5,17 @@ function RoundStartCheck()
 	--Add more checks to make sure it doesnt start a round when 
 	--One has already started 
 
-	if table.Count(player.GetAll()) >= 2 then
-		print("Round starting....")
+	if table.Count(player.GetAll()) >= 2 and roundActive == false then
+		print("Round starting....") 
+		for k,v in pairs(player.GetAll()) do
+			v:Notify("The Round is starting soon!")
+		end
 		RoundStart()
-	else print("Not enough players ")
-		
+	else 
+		print("Not enough players ")
+		for k,v in pairs(player.GetAll()) do
+			v:Notify("Waiting for players....")
+		end
 	end
 end
 
@@ -28,7 +34,7 @@ end
 
 function RoundEnd()
 	roundActive = false
-	--kill all players 
+	-- restarts the round
 end
 
 -- Makes sure the about the same pepole are on both teams
