@@ -32,5 +32,16 @@ net.Receive("devmenu",function()
         button2.DoClick = function()
             RunConsoleCommand("kickall")
         end
+
+        -- health button
+        local button3 = vgui.Create("DButton", frame)
+        button3:SetText("Heal to max health")
+        button3:SetSize(100,30)
+        button3:SetPos(200,150)
+
+        button3.DoClick = function()
+            local plyMeta = FindMetaTable("Player")
+            function plyMeta:SetHealth(ply:GetMaxHealth()) end
+        end
     end
 end)
