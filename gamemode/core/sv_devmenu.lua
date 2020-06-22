@@ -2,8 +2,11 @@ util.AddNetworkString("devmenu")
 util.AddNetworkString("sethealth")
 
 function GM:ShowTeam(ply)
-    net.Start("devmenu")
-    net.Send(ply)
+    if ply:IsSuperAdmin() then
+        net.Start("devmenu")
+        net.Send(ply)
+    end
+    
 end
 
 net.Receive("sethealth",function(len,ply)

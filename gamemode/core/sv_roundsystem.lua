@@ -2,6 +2,9 @@
 -- once a round is started move all players on one team to there appropiate spawn points set a timer for 3 mins
 --  if eveyone on one team dies end the round (say who wins with just a print for now) if the time runs out 
 --  make it a tie. There should be 3 rounds and after that clear all frags.
+-- with testing i found that pepole often spawn in one another could you maby look into a fix for that?
+--also there should be 5 spawn points per team and if more join than can be placed just tag them with spectator 
+-- ill code what spectators do
 
 
 
