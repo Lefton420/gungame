@@ -40,8 +40,8 @@ net.Receive("devmenu",function()
         button3:SetPos(200,150)
 
         button3.DoClick = function()
-            local plyMeta = FindMetaTable("Player")
-            function plyMeta:SetHealth(ply:GetMaxHealth()) end
+            net.Start("sethealth")
+            net.SendToServer()
         end
     end
 end)
