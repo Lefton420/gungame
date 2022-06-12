@@ -14,7 +14,7 @@ function plymeta:SetupTeam(teamid)
 	self:SetPlayerColor(Vector(col.r / 255, col.g / 255, col.b / 255)) -- coverts to vector color
 	self:SetHealth(100)
 	self:SetRunSpeed(400)
-	self:SetWalkSpeed(100)
+	self:SetWalkSpeed(200)
 	self:GiveWeapons(n)
 	self:SetupHands()
 	self:SetTeam(teamid)
