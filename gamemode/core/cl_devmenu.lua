@@ -43,5 +43,15 @@ net.Receive("devmenu",function()
             net.Start("sethealth")
             net.SendToServer()
         end
+
+        -- health button
+        local button4 = vgui.Create("DButton", frame)
+        button4:SetText("Ammo Refill")
+        button4:SetSize(100,30)
+        button4:SetPos(200,200)
+
+        button4.DoClick = function()
+            RunConsoleCommand("givecurrentammo","9999")
+        end
     end
 end)

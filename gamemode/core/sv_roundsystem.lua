@@ -6,10 +6,6 @@
 --also there should be 5 spawn points per team and if more join than can be placed just tag them with spectator 
 -- ill code what spectators do
 
-
-
-
-
 -- Checks if the round has started
 function RoundStartCheck()
 	
@@ -60,7 +56,6 @@ function AutoBalance()
 		return 0
 	end
 end
-
 
 function GM:PlayerSelectSpawn(ply)
 	print(ply:Team())

@@ -21,7 +21,7 @@ function plymeta:SetupTeam(teamid)
 end
 
 -- list of weapons to give to both teams
-function plymeta:GiveWeapons(n)
+function plymeta:GiveWeapons(x)
 	for k, v in pairs (player.GetAll()) do
 		self:Give("weapon_physgun", false)
 		self:Give("gmod_tool", false)

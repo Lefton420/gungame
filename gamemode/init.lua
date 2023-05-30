@@ -65,21 +65,7 @@ end
 
 -- Limits player voice chat to a specified range
 function GM:PlayerCanHearPlayersVoice(listener,speaker)
-	return (listener:GetPos():Distance(speaker:GetPos()) < 500)
-end
-
--- Disables player team freindley fire 
-function GM:PlayerShouldTakeDamage(ply,attacker)
-	if not IsValid(attacker) or not attacker:IsPlayer() then
-		return true
-	end
-	
-	if ply:Team() == attacker:Team() then 
-		return false
-	end
-	
-	return true
-
+	return listener:GetPos():Distance(speaker:GetPos()) < 500
 end
 
 -- Spawns the player spawnpoint entitys and assigns them teams

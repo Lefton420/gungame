@@ -1,5 +1,6 @@
 util.AddNetworkString("devmenu")
 util.AddNetworkString("sethealth")
+util.AddNetworkString("setammo")
 
 function GM:ShowTeam(ply)
     if ply:IsSuperAdmin() then
