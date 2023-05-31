@@ -16,7 +16,7 @@ function GM:PlayerSpawn(ply)
 
 	RoundStartCheck()
 	
-	ply:SetupTeam(AutoBalance())
+	ply:SetupTeam(0)
 	
 	for k,v in pairs(player.GetAll()) do
 		v:Notify(ply:Nick().." Has Spawned they are on the " .. team.GetName(ply:Team()).." team")
@@ -53,10 +53,16 @@ end
 -- Spawns the player spawnpoint entitys and assigns them teams
 function GM:InitPostEntity()
 	
-	local playerspawn = ents.Create("PlayerSpawnPoint")
-	playerspawn:SetPos(Vector(447.500671, 3957.758057, 64.031250))
-	playerspawn.team = 0
-	playerspawn:SetColor(Color(255,0,0))
-	playerspawn:Spawn()
+	local playerspawn1 = ents.Create("PlayerSpawnPoint")
+	playerspawn1:SetPos(Vector(447.500671, 3957.758057, 64.031250))
+	playerspawn1.team = 0
+	playerspawn1:SetColor(Color(255,0,0))
+	playerspawn1:Spawn()
+
+	local playerspawn2 = ents.Create("PlayerSpawnPoint")
+	playerspawn2:SetPos(Vector(460, 3958, 65.0))
+	playerspawn2.team = 0
+	playerspawn2:SetColor(Color(255,0,0))
+	playerspawn2:Spawn()
 
 end

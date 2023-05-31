@@ -3,10 +3,10 @@ local plymeta = FindMetaTable("Player")
 
 function plymeta:SetupTeam(teamid)
 	
-	-- Sets model based on team (add random models)
-	if teamid == 0 then
-		self:SetModel("models/player/Group03/male_0".. math.random(1,9) ..".mdl")
-	end
+	-- Sets model based on team
+	
+	self:SetModel("models/player/Group03/male_0".. math.random(1,9) ..".mdl")
+	
 	
 	local col = team.GetColor(teamid)
 	self:SetPlayerColor(Vector(col.r / 255, col.g / 255, col.b / 255)) -- coverts to vector color
