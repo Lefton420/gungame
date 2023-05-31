@@ -3,11 +3,9 @@ local plymeta = FindMetaTable("Player")
 
 function plymeta:SetupTeam(teamid)
 	
-	-- Sets model based on team
+	-- Sets model based on team (add random models)
 	if teamid == 0 then
 		self:SetModel("models/player/Group03/male_0".. math.random(1,9) ..".mdl")
-	elseif teamid == 1 then
-		self:SetModel("models/player/police.mdl")
 	end
 	
 	local col = team.GetColor(teamid)

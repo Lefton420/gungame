@@ -1,6 +1,6 @@
 util.AddNetworkString("devmenu")
 util.AddNetworkString("sethealth")
-util.AddNetworkString("setammo")
+
 
 function GM:ShowTeam(ply)
     if ply:IsSuperAdmin() then
@@ -13,7 +13,7 @@ end
 net.Receive("sethealth",function(len,ply)
 
     if ply:IsSuperAdmin() then
-        ply:SetHealth(100)
+        ply:SetHealth(9999)
     end
 
 end)

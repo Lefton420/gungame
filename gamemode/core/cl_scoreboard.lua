@@ -13,7 +13,6 @@ local function ToggleScoreboard(toggle)
     if toggle then
         local scrw, scrh = ScrW(), ScrH()
         GGScoreboard = vgui.Create("DFrame")
-        -- Controls the size of the main panel
         GGScoreboard:SetSize(scrw * .3, scrh * .6)
         GGScoreboard:Center()
         GGScoreboard:SetTitle("")
@@ -27,6 +26,7 @@ local function ToggleScoreboard(toggle)
         end
         
         local scroll, ypos = vgui.Create("DScrollPanel",GGScoreboard), 0
+        
         -- This sets offset from where the tabs start ↓
         scroll:SetPos(0, GGScoreboard:GetTall() * .05)
         scroll:SetSize(GGScoreboard:GetWide(),GGScoreboard:GetTall() * .97)
@@ -35,7 +35,7 @@ local function ToggleScoreboard(toggle)
         for k,v in pairs(player.GetAll()) do
             local playerPanel = vgui.Create("DPanel",scroll)
             playerPanel:SetPos(0,ypos)
-            -- This controls how thicc the tabs are ↓ (higher the number the thiccer they are)
+            -- This controls how thick the tabs are ↓
             playerPanel:SetSize(GGScoreboard:GetWide(), GGScoreboard:GetTall() * .05)
             local name, ping, plyteam = v:Name(), v:Ping(), v:Team()
             playerPanel.Paint = function(self,w,h)
