@@ -1,4 +1,4 @@
-net.Receive("devmenu",function()
+net.Receive("gg_devmenu",function()
     if !frame then
         local devframe, scrw, scrh = vgui.Create("DFrame"), ScrW(), ScrH()
         devframe:SetSize(scrw * .3, scrh * .6)
@@ -40,7 +40,7 @@ net.Receive("devmenu",function()
         button3:SetPos(200,150)
 
         button3.DoClick = function()
-            net.Start("sethealth")
+            net.Start("gg_sethealth")
             net.SendToServer()
         end
 

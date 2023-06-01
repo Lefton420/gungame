@@ -1,6 +1,8 @@
-local function buymenu_create()
-    local rando = math.random(1,100) 
-    print(rando)
-end
+util.AddNetworkString("gg_wepbuy")
 
-hook.Add( "KeyPress", "buymenu", buymenu_create)
+function GM:ShowSpare1(ply)
+    if ply:IsValid() then
+        net.Start("gg_wepbuy")
+        net.Send(ply)
+    end  
+end
