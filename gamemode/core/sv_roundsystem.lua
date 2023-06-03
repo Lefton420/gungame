@@ -1,4 +1,4 @@
--- if 2 pepole join start a timer and count down
+roundActive = false
 
 -- Checks if the round has started
 function RoundStartCheck()
@@ -9,19 +9,23 @@ function RoundStartCheck()
 	if table.Count(player.GetAll()) >= 2 and roundActive == false then
 		print("Round starting....") 
 		for k,v in pairs(player.GetAll()) do
-			v:Notify("The Round is starting soon!")
+			v:ChatPrint("The Round is starting soon!")
 		end
 		RoundStart()
 	else 
 		print("Not enough players ")
 		for k,v in pairs(player.GetAll()) do
-			v:Notify("Waiting for players....")
+			v:ChatPrint("Waiting for players....")
 		end
 	end
 end
 
 function RoundStart()
 	print("The round started")
+	for k,v in pairs(player.GetAll()) do
+		v:ChatPrint("Round Starting now!")
+		v:Kill()
+	end
 	roundActive = true
 	-- move players to starting area useing entity
 	-- start a timer
@@ -36,13 +40,4 @@ end
 function RoundEnd()
 	roundActive = false
 	-- restarts the round
-end
-
--- Sets player spawn to PlayerSpawnPoint
-function GM:PlayerSelectSpawn(ply)
-	for k,v in pairs(ents.FindByClass("info_player_start")) do
-		
-		return v
-		
-	end
 end

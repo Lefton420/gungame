@@ -1,27 +1,24 @@
 local plymeta = FindMetaTable("Player")
 
+-- Sets up basic player settings
 function plymeta:SetupTeam(teamid)
 	
-	-- Sets up basic player settings
 	self:SetModel("models/player/Group03/male_0".. math.random(1,9) ..".mdl")
 	
 	local col = team.GetColor(teamid)
 	self:SetPlayerColor(Vector(col.r / 255, col.g / 255, col.b / 255)) -- Coverts to vector color
-	self:SetHealth(100)
-	self:SetRunSpeed(400)
-	self:SetWalkSpeed(200)
-	self:GiveWeapons(n)
+	self:SetSlowWalkSpeed(60)
+	self:SetWalkSpeed(120)
+	self:SetRunSpeed(220)
+	self:SetCrouchedWalkSpeed(0.6)
 	self:SetupHands()
+	self:AllowFlashlight(true)
 	self:SetTeam(teamid)
 end
 
 -- List of weapons to give to both teams
 function plymeta:GiveWeapons(x)
 	for k, v in pairs (player.GetAll()) do
-		self:Give("weapon_physgun", false)
-		self:Give("gmod_tool", false)
-		self:Give("weapon_crossbow", false)
-		self:Give("weapon_shotgun", false)
+		self:Give("weapon_bp_alyxgun", false)
 	end
 end
-
