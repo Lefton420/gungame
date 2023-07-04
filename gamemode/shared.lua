@@ -1,11 +1,19 @@
-GM.Name = "Base Defense Battle"
-GM.Name = "Lefton"
-
 DeriveGamemode( "sandbox" )
 
-function GM:Initialize()
+gungame = {}
 
-end
+gungame.weapons = {"weapon_pistol", "weapon_shotgun"}
+gungame.weapons.infinite = true 
+gungame.weapons.default = {"weapon_pistol"}
+
+-- gungame.walkspeed = 200
+-- gungame.runspeed = 100
+-- gungame.jumpheight = 200
+
+gungame.round = {}
+gungame.round.time = {600}
+gungame.round.state = false
+
 
 -- Function that finds any file name and adds / includes it
 local function loadFile(name)
@@ -27,7 +35,7 @@ local function loadFile(name)
 	end
 end
 
--- loops through every file in the gamemode the runs loadfile on it
+-- Loops through every file in the gamemode the runs loadfile on it
 local function loadFolder(directory)
 	for k,v in pairs(file.Find(directory.."/*.lua", "LUA")) do
 		loadFile(directory.."/"..v)

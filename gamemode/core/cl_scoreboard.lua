@@ -33,12 +33,13 @@ local function ToggleScoreboard(toggle)
             playerPanel:SetPos(0,ypos)
             -- This controls how thick the tabs are
             playerPanel:SetSize(gg_Scoreboard:GetWide(), gg_Scoreboard:GetTall() * .05)
-            local name, ping, plyteam = v:Name(), v:Ping(), v:Team()
+            local name, ping, plyteam, frags = v:Name(), v:Ping(), v:Team(), v:Frags()
             playerPanel.Paint = function(self,w,h)
                 if IsValid(v) then
                     surface.SetDrawColor(0,0,0,200)
                     surface.DrawRect(0,0,w,h)
                     draw.SimpleText(name,"GG_sb_20",w/2,h/2, team.GetColor(plyteam), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+                    draw.SimpleText(frags,"GG_sb_20",w/2,h/2, team.GetColor(plyteam), TEXT_ALIGN_RIGHT, TEXT_ALIGN_RIGHT)
                 end
             end
             ypos = ypos + playerPanel:GetTall() * 1.1

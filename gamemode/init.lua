@@ -41,7 +41,7 @@ end
 
 -- Sets player spawn to PlayerSpawnPoint
 function GM:PlayerSelectSpawn(ply)
-	for k,v in pairs(ents.FindByClass("info_player_start")) do
+	for k,v in pairs(ents.FindByClass("info_player_deathmatch")) do
 		
 		return v
 		

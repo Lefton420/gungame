@@ -1,3 +1,4 @@
+-- Infinite AMMO FUNC
 function InfiniteAmmo()
     for k,v in pairs (player.GetAll()) do
         weapon = v:GetActiveWeapon()
@@ -27,3 +28,7 @@ function InfiniteAmmo()
 end
 
 hook.Add("Think", "InfiniteAmmo",InfiniteAmmo)
+
+function WeaponHandler()
+-- a function that says if the player has a number of frags it incremts the master weapon list 
+end

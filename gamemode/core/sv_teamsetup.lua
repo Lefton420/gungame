@@ -15,10 +15,3 @@ function plymeta:SetupTeam(teamid)
 	self:AllowFlashlight(true)
 	self:SetTeam(teamid)
 end
-
--- List of weapons to give to both teams
-function plymeta:GiveWeapons(x)
-	for k, v in pairs (player.GetAll()) do
-		self:Give("weapon_bp_alyxgun", false)
-	end
-end
