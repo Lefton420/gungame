@@ -11,7 +11,7 @@ function GM:ShowTeam(ply)
 end
 
 net.Receive("gg_sethealth",function(len,ply)
-    if ply:IsSuperAdmin() then
+    if ply:IsSuperAdmin() and ply:IsValid() then
         ply:SetHealth(9999)
     end
 end)

@@ -30,5 +30,15 @@ end
 hook.Add("Think", "InfiniteAmmo",InfiniteAmmo)
 
 function WeaponHandler()
--- a function that says if the player has a number of frags it incremts the master weapon list 
+    
+    local myTable = { "value1", "value2", "value3" } 
+    local next = next
+
+    -- Continue the loop until the table is empty
+    while next(myTable) ~= nil do
+        for key, value in pairs(myTable) do
+            print(value)  -- CODE
+            myTable[key] = nil  -- Remove the value from the table
+        end
+    end
 end
