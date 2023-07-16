@@ -1,4 +1,0 @@
-Make a spectator mode - put the player into noclip and make them invisible 
-maby see of you can tp them back if they fly to far? maby make it so they can tp to pepole
-
-make something to allow superadmins to be assigned
