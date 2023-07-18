@@ -21,7 +21,7 @@ function InfiniteAmmo()
                 v:SetAmmo(maxClip, primAmmoType)
             end
             if secAmmoType~= -1 and secAmmoType ~= primAmmoType then
-                v:SetAmmo(maxClip2, secAmmoType)
+                -- v:SetAmmo(maxClip2, secAmmoType)
             end
         end
     end
@@ -29,16 +29,24 @@ end
 
 hook.Add("Think", "InfiniteAmmo",InfiniteAmmo)
 
-function WeaponHandler()
-    
-    local myTable = { "value1", "value2", "value3" } 
-    local next = next
+-- Gives the player a new weapon on kills
+local playerWeaponIndex = {}
 
-    -- Continue the loop until the table is empty
-    while next(myTable) ~= nil do
-        for key, value in pairs(myTable) do
-            print(value)  -- CODE
-            myTable[key] = nil  -- Remove the value from the table
+hook.Add("PlayerDeath", "NextWeaponOnKill", function(victim, inflictor, attacker)
+    
+    if attacker:IsPlayer() and attacker ~= victim then
+        
+        playerWeaponIndex[attacker] = (playerWeaponIndex[attacker] or 0) + 1
+        
+        -- Loop back to the first weapon if the end of the list is reached
+        if playerWeaponIndex[attacker] > #gungame.weapons then
+            playerWeaponIndex[attacker] = 1
         end
+        
+        -- Assign the weapon to the weapon list with index
+        local nextWeapon = gungame.weapons[playerWeaponIndex[attacker]]
+        attacker:StripWeapons()
+        attacker:Give(nextWeapon)
+        print(attacker:Name().." has recived a ".. nextWeapon) 
     end
-end
+end)

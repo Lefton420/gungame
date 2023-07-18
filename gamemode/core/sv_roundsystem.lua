@@ -1,26 +1,26 @@
 -- Checks if the round has started
-function RoundStartCheck()
+-- function RoundStartCheck()
 	
-	--Add more checks to make sure it doesnt start a round when 
-	--One has already started 
+-- 	--Add more checks to make sure it doesnt start a round when 
+-- 	--One has already started 
 
-	if table.Count(player.GetAll()) >= 2 and gungame.round.state == false then
+-- 	if table.Count(player.GetAll()) >= 2 and gungame.round.state == false then
 		
-		print("The Round is starting soon!") 
-		for k,v in pairs(player.GetAll()) do
-			v:ChatPrint("The Round is starting soon!")
-		end
+-- 		print("The Round is starting soon!") 
+-- 		for k,v in pairs(player.GetAll()) do
+-- 			v:ChatPrint("The Round is starting soon!")
+-- 		end
 
-		timer.Simple( 15, function() RoundStart() end )
+-- 		timer.Simple( 15, function() RoundStart() end )
 	
-	else 
+-- 	else 
 		
-		for k,v in pairs(player.GetAll()) do
-			v:ChatPrint("Waiting for players....")
-		end
+-- 		for k,v in pairs(player.GetAll()) do
+-- 			v:ChatPrint("Waiting for players....")
+-- 		end
 	
-	end
-end
+-- 	end
+-- end
 
 function RoundStart()
 	print("The Round is starting")
@@ -31,7 +31,7 @@ function RoundStart()
 	
 	gungame.round.state = true
 
-	timer.Simple( 20, function() RoundEnd() end )
+	-- timer.Simple( 20, function() RoundEnd() end )
 end
 
 function RoundEnd()
