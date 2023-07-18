@@ -2,16 +2,15 @@ DeriveGamemode( "sandbox" )
 
 gungame = {}
 
-gungame.weapons = {"weapon_pistol", "weapon_shotgun","weapon_smg1","weapon_ar2"}
-gungame.weapons.infinite = true 
-gungame.weapons.default = {"weapon_pistol"}
+gungame.weapons = {"weapon_shotgun","weapon_smg1","weapon_ar2","weapon_bp_taucannon"}
+gungame.weapons.infinite = true
 
 gungame.walkspeed = 200
 gungame.runspeed = 100
 gungame.jumpheight = 200
 
 gungame.round = {}
-gungame.round.time = {600}
+gungame.round.time = 5
 gungame.round.state = false
 
 

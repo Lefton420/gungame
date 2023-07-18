@@ -1,8 +1,8 @@
--- Infinite AMMO FUNC
+-- Infinite AMMO function
 function InfiniteAmmo()
     for k,v in pairs (player.GetAll()) do
         weapon = v:GetActiveWeapon()
-        if IsValid(weapon) then
+        if IsValid(weapon) and gungame.weapons.infinite == true then
             local maxClip = weapon:GetMaxClip1()
             local maxClip2 = weapon:GetMaxClip2()
             local primAmmoType = weapon:GetPrimaryAmmoType()
@@ -27,26 +27,26 @@ function InfiniteAmmo()
     end
 end
 
-hook.Add("Think", "InfiniteAmmo",InfiniteAmmo)
-
 -- Gives the player a new weapon on kills
 local playerWeaponIndex = {}
 
-hook.Add("PlayerDeath", "NextWeaponOnKill", function(victim, inflictor, attacker)
-    
+function NextGun(victim, inflictor, attacker)
     if attacker:IsPlayer() and attacker ~= victim then
         
         playerWeaponIndex[attacker] = (playerWeaponIndex[attacker] or 0) + 1
         
-        -- Loop back to the first weapon if the end of the list is reached
+        -- Error handle (if nothing is found keep current weapon)
         if playerWeaponIndex[attacker] > #gungame.weapons then
-            playerWeaponIndex[attacker] = 1
+            return 
         end
         
         -- Assign the weapon to the weapon list with index
         local nextWeapon = gungame.weapons[playerWeaponIndex[attacker]]
         attacker:StripWeapons()
         attacker:Give(nextWeapon)
-        print(attacker:Name().." has recived a ".. nextWeapon) 
+        print(attacker:Name().." has received a ".. nextWeapon) 
     end
-end)
+end
+
+hook.Add("Think", "InfiniteAmmo",InfiniteAmmo)
+hook.Add("PlayerDeath", "NextWeaponOnKill", NextGun)

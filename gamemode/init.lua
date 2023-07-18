@@ -2,17 +2,18 @@ AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
 include("shared.lua")
 
-
 -- Asignes team on player respawn and checks if new round can start
 function GM:PlayerSpawn(ply)
+	
 	if ply.hasfirstspawned then
 		return
 	end
 	ply.hasfirstspawned = true
 
-	RoundStartCheck()
+	-- RoundStartCheck()
 	
 	ply:SetupTeam(0)
+	ply:Give("weapon_pistol")
 	
 	for k,v in pairs(player.GetAll()) do
 		v:ChatPrint(ply:Nick().." Has spawned in!")
@@ -20,8 +21,8 @@ function GM:PlayerSpawn(ply)
     
 	ply:Spawn()
 
-	local d = GetConVar( "sbox_noclip" )
-	d:SetBool(true)
+	local noclip = GetConVar( "sbox_noclip" )
+	noclip:SetBool(true)
 end
 
 -- Limits Player text chat to a specified range
@@ -41,11 +42,8 @@ end
 
 -- Sets player spawn to PlayerSpawnPoint
 function GM:PlayerSelectSpawn(ply)
-	for k,v in pairs(ents.FindByClass("info_player_deathmatch")) do
-		
+	for k,v in pairs(ents.FindByClass("info_player_start")) do
 		return v
-		
 	end
+	ply:Give("weapon_pistol")
 end
-
-RoundStartCheck()
