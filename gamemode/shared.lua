@@ -9,7 +9,7 @@ gungame.walkspeed = 250
 gungame.runspeed = 350
 
 gungame.round = {}
-gungame.round.time = 5
+gungame.round.time = 30
 gungame.round.state = false
 
 

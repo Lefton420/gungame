@@ -11,14 +11,7 @@ function GM:PlayerSpawn(ply)
 	ply.hasfirstspawned = true
 
 	ply:SetupTeam(0)
-	
-	for k,v in pairs(player.GetAll()) do
-		v:ChatPrint(ply:Nick().." Has spawned in!")
-	end
-    
 	ply:Spawn()
-
-	-- RoundStartCheck()
 
 	local noclip = GetConVar( "sbox_noclip" )
 	noclip:SetBool(true)
@@ -37,4 +30,10 @@ end
 -- Limits player voice chat to a specified range
 function GM:PlayerCanHearPlayersVoice(listener,speaker)
 	return listener:GetPos():Distance(speaker:GetPos()) < 500
+end
+
+function ServerMsg(inputtext)
+	for k,v in pairs(player.GetAll()) do
+		v:ChatPrint(inputtext)
+	end
 end

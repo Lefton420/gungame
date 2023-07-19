@@ -39,7 +39,7 @@ local function ToggleScoreboard(toggle)
                     surface.SetDrawColor(0,0,0,200)
                     surface.DrawRect(0,0,w,h)
                     draw.SimpleText(name,"GG_sb_20",w/2,h/2, team.GetColor(plyteam), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
-                    draw.SimpleText(frags,"GG_sb_20",w/2,h/2, team.GetColor(plyteam), TEXT_ALIGN_RIGHT, TEXT_ALIGN_RIGHT)
+                    draw.SimpleText(frags,"GG_sb_20",w/1.5,h/2, team.GetColor(plyteam), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
                 end
             end
             ypos = ypos + playerPanel:GetTall() * 1.1

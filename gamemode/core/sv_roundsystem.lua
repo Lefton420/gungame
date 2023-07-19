@@ -21,12 +21,13 @@ end
 function StartRound()
     
     if CheckRoundEnd() == false then
-        print("Round starting!")
+        ServerMsg("Round starting!")
         gungame.round.state = true
         for _, ply in pairs(player.GetAll()) do
+            ply:StripWeapons()
             ply:Give("weapon_pistol")
             ply:Spawn()
-            ply:Freeze(true)
+            -- ply:Freeze(true)
         end
         
         -- Unfreeze player after 5 seconds
@@ -46,13 +47,13 @@ end
 
 -- Returns true or false if game should restart
 function EndRound(restart)
-    print("Round ended!")
+    ServerMsg("Round ended!")
     gungame.round.state = false
 	if restart == true then
-		print("Round is restarting!")
+		ServerMsg("Round will be restaring soon!")
     	timer.Simple(10, StartRound)  -- start new round after 10 seconds
 	elseif restart == false then
-		print("Round will not restart!")
+		ServerMsg("Round will not restart! ... Not enough Players!")
 		timer.Remove("RoundTimer")
 	end
 end
