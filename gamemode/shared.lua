@@ -5,9 +5,8 @@ gungame = {}
 gungame.weapons = {"weapon_shotgun","weapon_smg1","weapon_ar2","weapon_bp_taucannon"}
 gungame.weapons.infinite = true
 
-gungame.walkspeed = 200
-gungame.runspeed = 100
-gungame.jumpheight = 200
+gungame.walkspeed = 100
+gungame.runspeed = 250
 
 gungame.round = {}
 gungame.round.time = 5

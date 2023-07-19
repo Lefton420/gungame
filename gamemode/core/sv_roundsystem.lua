@@ -1,12 +1,13 @@
 function StartRound()
     print("Round starting!")
     gungame.round.state = true
-    for _, player in pairs(player.GetAll()) do
-        player:StripWeapons()
-        player:Spawn()
-        player:Freeze(true)
+    for _, ply in pairs(player.GetAll()) do
+        ply:Give("weapon_pistol")
+        ply:Spawn()
+        ply:Freeze(true)
     end
-	-- unfreeze player after 5 seconds
+	
+	-- Unfreeze player after 5 seconds
     timer.Simple(5, function()
         for _, player in pairs(player.GetAll()) do
             player:Freeze(false)

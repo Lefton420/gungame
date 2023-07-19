@@ -10,8 +10,6 @@ function GM:PlayerSpawn(ply)
 	end
 	ply.hasfirstspawned = true
 
-	-- RoundStartCheck()
-	
 	ply:SetupTeam(0)
 	ply:Give("weapon_pistol")
 	
@@ -45,5 +43,4 @@ function GM:PlayerSelectSpawn(ply)
 	for k,v in pairs(ents.FindByClass("info_player_start")) do
 		return v
 	end
-	ply:Give("weapon_pistol")
 end

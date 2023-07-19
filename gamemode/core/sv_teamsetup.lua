@@ -8,10 +8,10 @@ function plymeta:SetupTeam(teamid)
 	local col = team.GetColor(teamid)
 	self:SetPlayerColor(Vector(col.r / 255, col.g / 255, col.b / 255)) -- Coverts to vector color
 	self:SetSlowWalkSpeed(60)
-	self:SetWalkSpeed(120)
-	self:SetRunSpeed(220)
+	self:SetWalkSpeed(gungame.walkspeed )
+	self:SetRunSpeed(gungame.runspeed)
 	self:SetCrouchedWalkSpeed(0.6)
 	self:SetupHands()
-	self:AllowFlashlight(true)
+	self:AllowFlashlight(false)
 	self:SetTeam(teamid)
 end
