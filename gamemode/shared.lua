@@ -1,4 +1,4 @@
-DeriveGamemode( "sandbox" )
+DeriveGamemode( "base" )
 
 gungame = {}
 
@@ -10,6 +10,7 @@ gungame.runspeed = 350
 
 gungame.round = {}
 gungame.round.time = 30
+gungame.round.timebetween = 15
 gungame.round.state = false
 
 

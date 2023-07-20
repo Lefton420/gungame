@@ -37,3 +37,16 @@ function ServerMsg(inputtext)
 		v:ChatPrint(inputtext)
 	end
 end
+
+local canDamage = false
+
+function PlayerPvp(value)
+    canDamage = value
+end
+
+-- The hook to handle damage between players
+hook.Add("PlayerShouldTakeDamage", "HandlePvP", function(ply, attacker)
+    if attacker:IsPlayer() and not canDamage then
+        return false
+    end
+end)

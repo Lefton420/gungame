@@ -1,6 +1,6 @@
 "gungame"
 {
-	"base"		"sandbox"
+	"base"		"base"
 	"title"		"gungame"
 	"maps"		"^gm_"
 	"menusystem"	"1"
