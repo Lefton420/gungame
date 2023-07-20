@@ -34,7 +34,7 @@ function StartRound()
         
         for _, ply in pairs(player.GetAll()) do
             ply:StripWeapons()
-            ply:Give("weapon_pistol")
+            ply:Give(gungame.weapons.default)
             ply:Spawn()
             ply:Freeze(true)
         end

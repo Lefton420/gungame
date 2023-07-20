@@ -3,6 +3,7 @@ DeriveGamemode( "base" )
 gungame = {}
 
 gungame.weapons = {"weapon_shotgun","weapon_smg1","weapon_ar2","weapon_bp_taucannon"}
+gungame.weapons.default = "weapon_pistol"
 gungame.weapons.infinite = true
 
 gungame.walkspeed = 250

@@ -32,6 +32,16 @@ function GM:PlayerCanHearPlayersVoice(listener,speaker)
 	return listener:GetPos():Distance(speaker:GetPos()) < 500
 end
 
+function GM:PlayerDeath(ply)
+    timer.Simple(1, function()  -- Delay of 1 second before respawn
+        if IsValid(ply) then
+            ply:Spawn()
+            ply:Give(gungame.weapons.default)
+        end
+    end)
+end
+
+
 function ServerMsg(inputtext)
 	for k,v in pairs(player.GetAll()) do
 		v:ChatPrint(inputtext)
