@@ -28,6 +28,7 @@ function StartRound()
     
     if CheckRoundEnd() == false then
         ServerMsg("Round starting!")
+        ResetWeaponIndex()
         PlayerPvp(true)
         gungame.round.state = true
         StartCountdown(gungame.round.time)
@@ -41,8 +42,8 @@ function StartRound()
         
         -- Unfreeze player after 5 seconds
         timer.Simple(5, function()
-            for _, player in pairs(player.GetAll()) do
-                player:Freeze(false)
+            for _, ply in pairs(player.GetAll()) do
+                ply:Freeze(false)
             end
         end)
 
@@ -56,10 +57,16 @@ end
 
 -- Returns true or false if game should restart
 function EndRound(restart)
+    
     ServerMsg("Round ended!")
     gungame.round.state = false
     PlayerPvp(false)
-	if restart == true then
+
+    for _, ply in pairs(player.GetAll()) do
+        ply:StripWeapons()
+    end
+	
+    if restart == true then
 		
         ServerMsg("Round will be restaring soon!")
         StartCountdown(gungame.round.timebetween )

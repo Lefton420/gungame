@@ -21,7 +21,7 @@ function InfiniteAmmo()
                 v:SetAmmo(maxClip, primAmmoType)
             end
             if secAmmoType~= -1 and secAmmoType ~= primAmmoType then
-                -- v:SetAmmo(maxClip2, secAmmoType)
+                v:SetAmmo(maxClip2, secAmmoType)
             end
         end
     end
@@ -48,5 +48,8 @@ function NextGun(victim, inflictor, attacker)
     end
 end
 
+function ResetWeaponIndex()
+    playerWeaponIndex = {}
+end
 hook.Add("Think", "InfiniteAmmo",InfiniteAmmo)
 hook.Add("PlayerDeath", "NextWeaponOnKill", NextGun)
