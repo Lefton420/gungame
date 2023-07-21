@@ -32,24 +32,38 @@ local playerWeaponIndex = {}
 
 function NextGun(victim, inflictor, attacker)
     if attacker:IsPlayer() and attacker ~= victim then
-        
-        playerWeaponIndex[attacker] = (playerWeaponIndex[attacker] or 0) + 1
-        
+        local targetIndex = (playerWeaponIndex[attacker] or 1) + 1
+
         -- Error handle (if nothing is found keep current weapon)
-        if playerWeaponIndex[attacker] > #gungame.weapons then
-            return 
+        if targetIndex > #gungame.weapons then
+            return
         end
-        
+
+        playerWeaponIndex[attacker] = targetIndex
+
         -- Assign the weapon to the weapon list with index
         local nextWeapon = gungame.weapons[playerWeaponIndex[attacker]]
         attacker:StripWeapons()
         attacker:Give(nextWeapon)
-        print(attacker:Name().." has received a ".. nextWeapon) 
+        print(attacker:Name() .. " has received a " .. nextWeapon)
     end
 end
 
 function ResetWeaponIndex()
     playerWeaponIndex = {}
+end
+
+function CurrentGun(ply)
+    if not IsValid(ply) then
+        return
+    end
+
+    local targetIndex = playerWeaponIndex[ply] or 1
+    if targetIndex > #gungame.weapons then
+        return gungame.weapons[#gungame.weapons]
+    end
+
+    return gungame.weapons[targetIndex] -- return the current weapon we should get
 end
 hook.Add("Think", "InfiniteAmmo",InfiniteAmmo)
 hook.Add("PlayerDeath", "NextWeaponOnKill", NextGun)

@@ -2,16 +2,17 @@ DeriveGamemode( "base" )
 
 gungame = {}
 
-gungame.weapons = {"weapon_shotgun","weapon_smg1","weapon_ar2","weapon_bp_taucannon"}
-gungame.weapons.default = "weapon_pistol"
+gungame.weapons = {"weapon_pistol", "weapon_shotgun","weapon_smg1","weapon_ar2","weapon_bp_taucannon"}
+--gungame.weapons.default = "weapon_pistol"
 gungame.weapons.infinite = true
 
 gungame.walkspeed = 250
 gungame.runspeed = 350
 
 gungame.round = {}
-gungame.round.time = 30
+gungame.round.time = 120
 gungame.round.timebetween = 15
+gungame.round.players = 2
 gungame.round.state = false
 
 

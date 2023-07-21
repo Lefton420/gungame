@@ -1,6 +1,7 @@
 util.AddNetworkString("gg_devmenu")
 util.AddNetworkString("gg_sethealth")
 
+-- By default this is the f2 key
 function GM:ShowTeam(ply)
     if ply:IsSuperAdmin() and ply:IsValid() then
         net.Start("gg_devmenu")

@@ -4,7 +4,6 @@ include("shared.lua")
 
 -- Asignes team on player respawn and checks if new round can start
 function GM:PlayerSpawn(ply)
-	
 	if ply.hasfirstspawned then
 		return
 	end
@@ -12,17 +11,14 @@ function GM:PlayerSpawn(ply)
 
 	ply:SetupTeam(0)
 	ply:Spawn()
-
-	local noclip = GetConVar( "sbox_noclip" )
-	noclip:SetBool(true)
 end
 
 -- Limits Player text chat to a specified range
 function GM:PlayerCanSeePlayersChat(text,teamonly,listener,speaker)
 	local distance = listener:GetPos():Distance(speaker:GetPos())
 
-	if(distance <= 500) then
-		return true 
+	if distance <= 500 then
+		return true
 	end
 
 end
@@ -32,13 +28,16 @@ function GM:PlayerCanHearPlayersVoice(listener,speaker)
 	return listener:GetPos():Distance(speaker:GetPos()) < 500
 end
 
-function GM:PlayerDeath(ply)
-    timer.Simple(1, function()  -- Delay of 1 second before respawn
-        if IsValid(ply) then
-            ply:Spawn()
-            ply:Give(gungame.weapons.default)
-        end
-    end)
+function GM:PlayerDeath(ply,inflictor,attacker)
+	timer.Simple(1, function()  -- Delay of 1 second before respawn
+		if not IsValid(ply) then
+			return
+		end
+
+		-- spawn them and give them the gun
+		ply:Spawn()
+		ply:Give(CurrentGun(ply))
+	end)
 end
 
 
@@ -48,15 +47,20 @@ function ServerMsg(inputtext)
 	end
 end
 
-local canDamage = false
+function GM:PlayerDeathThink(ply)
+	return false
+end
 
+
+local canDamage = false
 function PlayerPvp(value)
-    canDamage = value
+	canDamage = value
 end
 
 -- The hook to handle damage between players
 hook.Add("PlayerShouldTakeDamage", "HandlePvP", function(ply, attacker)
-    if attacker:IsPlayer() and not canDamage then
-        return false
-    end
+	if attacker:IsPlayer() and not canDamage then
+		return false
+	end
 end)
+
