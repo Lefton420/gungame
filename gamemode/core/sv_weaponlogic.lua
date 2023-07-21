@@ -21,7 +21,7 @@ function InfiniteAmmo()
                 v:SetAmmo(maxClip, primAmmoType)
             end
             if secAmmoType~= -1 and secAmmoType ~= primAmmoType then
-                v:SetAmmo(maxClip2, secAmmoType)
+                v:SetAmmo(maxClip2, secAmmoType)  -- Comment this out to disable secondarys
             end
         end
     end
@@ -49,10 +49,12 @@ function NextGun(victim, inflictor, attacker)
     end
 end
 
+-- This is a way to call outside of this file
 function ResetWeaponIndex()
     playerWeaponIndex = {}
 end
 
+-- This is so players keep their last gun when they die
 function CurrentGun(ply)
     if not IsValid(ply) then
         return
@@ -65,5 +67,6 @@ function CurrentGun(ply)
 
     return gungame.weapons[targetIndex] -- return the current weapon we should get
 end
+
 hook.Add("Think", "InfiniteAmmo",InfiniteAmmo)
 hook.Add("PlayerDeath", "NextWeaponOnKill", NextGun)

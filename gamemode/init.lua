@@ -47,17 +47,18 @@ function ServerMsg(inputtext)
 	end
 end
 
+-- Players cannot self respawn
 function GM:PlayerDeathThink(ply)
 	return false
 end
 
 
+-- Bad implementaion to turn on and off player pvp
 local canDamage = false
 function PlayerPvp(value)
 	canDamage = value
 end
 
--- The hook to handle damage between players
 hook.Add("PlayerShouldTakeDamage", "HandlePvP", function(ply, attacker)
 	if attacker:IsPlayer() and not canDamage then
 		return false
